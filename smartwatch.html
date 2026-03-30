@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartX — Next-Gen Smart Watches</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card-bg: #111118;
+      --border: #1e1e2e;
+      --accent: #c8f135;
+      --accent2: #7c5cfc;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .navbar-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      color: var(--accent) !important;
+      letter-spacing: 2px;
+    }
+    .nav-link {
+      color: var(--muted) !important;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 14px !important;
+    }
+    .nav-link:hover { color: var(--text) !important; }
+    .cart-btn {
+      background: var(--accent);
+      color: #000 !important;
+      border-radius: 6px;
+      padding: 6px 14px !important;
+      font-weight: 600;
+    }
+    .cart-btn:hover { background: #b5da20; }
+    .navbar-toggler { border-color: var(--border); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 92vh;
+      background: linear-gradient(135deg, #0a0a0f 40%, #12122a 100%);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      border-radius: 50%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(200,241,53,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(200,241,53,0.25);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 400px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .btn-primary-custom {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary-custom:hover { background: #b5da20; color: #000; }
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-img-wrap {
+      position: relative;
+      text-align: center;
+    }
+    .hero-img-wrap img {
+      max-width: 420px;
+      width: 100%;
+      filter: drop-shadow(0 30px 60px rgba(124,92,252,0.3));
+    }
+    .hero-badge {
+      position: absolute;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .hero-badge.b1 { top: 20%; left: -10px; }
+    .hero-badge.b2 { bottom: 20%; right: -10px; }
+    .hero-badge i { color: var(--accent); margin-right: 6px; }
+
+    /* ── Section headings ── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* ── Products ── */
+    #products { background: var(--bg); padding: 90px 0; }
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+    }
+    .product-img-wrap {
+      background: #16161f;
+      padding: 32px;
+      text-align: center;
+    }
+    .product-img-wrap img { width: 140px; height: 140px; object-fit: contain; }
+    .product-body { padding: 20px; }
+    .product-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent2);
+      background: rgba(124,92,252,0.1);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .product-desc { color: var(--muted); font-size: 0.82rem; margin-bottom: 14px; }
+    .product-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+    .product-price span { font-size: 0.85rem; font-weight: 400; color: var(--muted); text-decoration: line-through; margin-left: 8px; }
+    .btn-buy {
+      width: 100%;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-buy:hover { background: #b5da20; }
+
+    /* ── Features ── */
+    #features { background: #0d0d14; padding: 90px 0; border-top: 1px solid var(--border); }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 22px;
+      height: 100%;
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: rgba(200,241,53,0.08);
+      border: 1px solid rgba(200,241,53,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .feature-card h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .feature-card p { color: var(--muted); font-size: 0.83rem; line-height: 1.6; margin: 0; }
+
+
+
+    /* ── Footer ── */
+    footer {
+      background: #0d0d14;
+      border-top: 1px solid var(--border);
+      padding: 60px 0 28px;
+    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); letter-spacing: 2px; }
+    .footer-tagline { color: var(--muted); font-size: 0.83rem; margin-top: 6px; }
+    .footer-heading { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 14px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--text); }
+    .social-icon {
+      width: 36px; height: 36px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-right: 6px;
+    }
+    .social-icon:hover { color: var(--accent); border-color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">SmartX</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+      </ul>
+      <a href="#" class="nav-link cart-btn d-flex align-items-center gap-2">
+        <i class="bi bi-bag"></i> Cart (0)
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-tag"><i class="bi bi-lightning-fill me-1"></i> New Collection 2026</div>
+        <h1>Next-Gen<br/><span>Smart</span> Watches</h1>
+        <p>Track fitness, stay connected, and upgrade your lifestyle with the most advanced wearables on the market.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#products" class="btn-primary-custom">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+          <a href="#features" class="btn-outline-custom">Explore Features</a>
+        </div>
+        <div class="d-flex gap-4 mt-4">
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:1.8rem;color:#fff;">50K+</div>
+            <div style="font-size:0.78rem;color:var(--muted);">Happy Customers</div>
+          </div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:1.8rem;color:#fff;">4.9★</div>
+            <div style="font-size:0.78rem;color:var(--muted);">Average Rating</div>
+          </div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:1.8rem;color:#fff;">2yr</div>
+            <div style="font-size:0.78rem;color:var(--muted);">Warranty</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="SmartWatch"/>
+          <div class="hero-badge b1"><i class="bi bi-heart-pulse-fill"></i> Heart Rate 72 bpm</div>
+          <div class="hero-badge b2"><i class="bi bi-geo-alt-fill"></i> GPS Active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-sub mx-auto">Premium smartwatches engineered for performance, style, and everyday life.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&q=80" alt="SmartX Pro"/>
+          </div>
+          <div class="product-body">
+            <div class="product-badge">Best Seller</div>
+            <div class="product-name">SmartX Pro</div>
+            <div class="product-desc">AMOLED display, 7-day battery, GPS + Health Suite</div>
+            <div class="product-price">₹14,999 <span>₹19,999</span></div>
+            <button class="btn btn-buy">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=300&q=80" alt="SmartX Lite"/>
+          </div>
+          <div class="product-body">
+            <div class="product-badge">New</div>
+            <div class="product-name">SmartX Lite</div>
+            <div class="product-desc">Slim design, 10-day battery, sleep & step tracking</div>
+            <div class="product-price">₹7,499 <span>₹9,999</span></div>
+            <button class="btn btn-buy">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1617043786394-f977fa12eddf?w=300&q=80" alt="SmartX Ultra"/>
+          </div>
+          <div class="product-body">
+            <div class="product-badge">Premium</div>
+            <div class="product-name">SmartX Ultra</div>
+            <div class="product-desc">Titanium case, ECG, SpO2, advanced sport modes</div>
+            <div class="product-price">₹24,999 <span>₹32,999</span></div>
+            <button class="btn btn-buy">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=300&q=80" alt="SmartX Sport"/>
+          </div>
+          <div class="product-body">
+            <div class="product-badge">Sport Edition</div>
+            <div class="product-name">SmartX Sport</div>
+            <div class="product-desc">Military-grade, 50m waterproof, dual GPS system</div>
+            <div class="product-price">₹18,499 <span>₹22,999</span></div>
+            <button class="btn btn-buy">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section id="features">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Why SmartX</div>
+      <h2 class="section-title">Packed With Features</h2>
+      <p class="section-sub mx-auto">Everything you need, right on your wrist.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <h5>Heart Rate Monitor</h5>
+          <p>Continuous 24/7 optical heart rate tracking with irregular rhythm alerts and BPM history.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <h5>Built-in GPS</h5>
+          <p>Standalone GPS with multi-satellite support. Track routes, pace, and distance without your phone.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-moon-stars-fill"></i></div>
+          <h5>Sleep Tracking</h5>
+          <p>Advanced sleep stage analysis including REM, deep, and light sleep with smart alarm system.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-droplet-fill"></i></div>
+          <h5>Waterproof 50m</h5>
+          <p>IP68 and 5ATM water resistance. Swim-proof design — wear it in the pool, rain, or shower.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+          <h5>Fast Charging</h5>
+          <p>0 to 100% in just 45 minutes. Never miss a day's tracking with our rapid charge technology.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-phone-fill"></i></div>
+          <h5>Smart Notifications</h5>
+          <p>Calls, messages, and app alerts delivered right to your wrist. Reply directly from the watch.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-activity"></i></div>
+          <h5>SpO2 & Stress</h5>
+          <p>Real-time blood oxygen saturation monitoring and stress level tracking throughout the day.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-shield-check-fill"></i></div>
+          <h5>7-Day Battery</h5>
+          <p>Up to 7 days on a single charge in smartwatch mode. Up to 20 days in basic mode.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-logo">SmartX</div>
+        <div class="footer-tagline">Next-Gen Smart Watches for Every Lifestyle.</div>
+        <div class="mt-3">
+          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-heading">Contact Us</div>
+        <ul class="footer-links">
+          <li><i class="bi bi-envelope me-2" style="color:var(--accent)"></i>support@smartx.in</li>
+          <li class="mt-2"><i class="bi bi-telephone me-2" style="color:var(--accent)"></i>+91 98765 43210</li>
+          <li class="mt-2"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>Hyderabad, Telangana, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2026 SmartX. All rights reserved.</span>
+      <span>
+        <a href="#" style="color:var(--muted);text-decoration:none;margin-right:16px;">Privacy Policy</a>
+        <a href="#" style="color:var(--muted);text-decoration:none;">Terms of Use</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
